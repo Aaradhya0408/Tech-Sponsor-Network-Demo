@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tech Sponsor Network</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F3F7F6; --surface:#FFFFFF; --ink:#0F2A2A; --muted:#566E6C; --line:#D5E2E0;
+  --teal:#0B7A78; --teal-ink:#FFFFFF; --teal-soft:#DAF0EE;
+  --purple:#5A3FD0; --purple-ink:#FFFFFF; --purple-soft:#ECE8FB;
+  --ok:#1B7F48; --ok-soft:#DDF2E5; --bad:#B53636; --bad-soft:#F8E1E1; --warn:#8F5F0A; --warn-soft:#FBEBCB;
+  --shadow:0 1px 2px rgba(15,42,42,.06),0 8px 24px rgba(15,42,42,.06);
+  --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --f-body:'DM Sans','Segoe UI',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1514; --surface:#122120; --ink:#E5F1EF; --muted:#90A9A6; --line:#243836;
+  --teal:#3CC5BF; --teal-ink:#06201F; --teal-soft:#123A3A;
+  --purple:#A794FF; --purple-ink:#150E3A; --purple-soft:#271F49;
+  --ok:#5FD08E; --ok-soft:#133522; --bad:#F08A8A; --bad-soft:#3B1B1B; --warn:#E9B755; --warn-soft:#3A2D10;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1514; --surface:#122120; --ink:#E5F1EF; --muted:#90A9A6; --line:#243836;
+  --teal:#3CC5BF; --teal-ink:#06201F; --teal-soft:#123A3A;
+  --purple:#A794FF; --purple-ink:#150E3A; --purple-soft:#271F49;
+  --ok:#5FD08E; --ok-soft:#133522; --bad:#F08A8A; --bad-soft:#3B1B1B; --warn:#E9B755; --warn-soft:#3A2D10;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35); color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--f-body);padding-inline:16px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1;letter-spacing:-.02em}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--purple)}
+:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.wrap{max-width:1160px;margin-inline:auto}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;transition:transform .12s,background .12s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--purple);color:var(--purple-ink);border-color:var(--purple)}
+.btn.teal{background:var(--teal);color:var(--teal-ink);border-color:var(--teal)}
+.btn.sm{padding:6px 12px;font-size:13px;border-radius:8px}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}.pill.mute{background:var(--line);color:var(--muted)}
+.pill.teal{background:var(--teal-soft);color:var(--teal)}.pill.purple{background:var(--purple-soft);color:var(--purple)}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.02em;background:none;border:0;padding:0}
+.mark{width:30px;height:30px;border-radius:9px;background:var(--teal);position:relative;flex:none}
+.mark::before,.mark::after{content:"";position:absolute;border-radius:50%}
+.mark::before{width:11px;height:11px;background:var(--surface);left:5px;top:5px}
+.mark::after{width:11px;height:11px;background:var(--purple);right:5px;bottom:5px}
+.top-r{display:flex;gap:10px;align-items:center}
+
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-block:44px 36px}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;margin-block:14px 18px}
+.hero h1 em{font-style:normal;color:var(--purple)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch}
+.season{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.season h3{font-size:22px;margin-block:8px 14px}
+.weeks{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-block:14px 6px}
+.weeks i{height:10px;border-radius:5px;background:var(--line)}
+.weeks i.on{background:var(--teal)}
+.season dl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 0}
+.season dt{font-size:12px;color:var(--muted)}.season dd{margin:0;font:500 20px var(--f-mono)}
+.doors{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:8px 36px}
+.door{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:transform .15s,border-color .15s,box-shadow .15s}
+.door:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--shadow)}
+.door svg{width:44px;height:44px;color:var(--teal)}
+.door:nth-child(even) svg{color:var(--purple)}
+.door h3{font-size:22px}
+.door p{color:var(--muted);font-size:14px;flex:1}
+.door .go{font-weight:700;font-size:14px;color:var(--purple)}
+.band{padding-block:36px;border-top:1px solid var(--line)}
+.band h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:8px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tier.locked{background:transparent;border-style:dashed}
+.tier .amt{font:500 34px var(--f-mono);letter-spacing:-.03em}
+.tier ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}
+.flow div{border-left:3px solid var(--teal);padding-left:14px}
+.flow b{display:block;font-family:var(--f-display);font-size:17px;margin-bottom:4px}
+.flow span{color:var(--muted);font-size:14px}
+.foot{padding-block:28px 40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+.gate{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;min-height:70vh;padding-block:24px}
+.gate-art{background:var(--teal-soft);border-radius:24px;padding:36px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.gate-art h2{font-size:clamp(30px,4vw,46px)}
+.gate-art ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.gate-art li{display:flex;gap:10px;align-items:flex-start}
+.gate-art li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--teal);margin-top:8px}
+.gate-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--shadow);display:grid;gap:16px}
+.gate-card h2{font-size:30px}
+.switch{display:flex;gap:6px;flex-wrap:wrap}
+.switch button{border:1.5px solid var(--line);background:transparent;border-radius:99px;padding:5px 14px;font-size:13px;font-weight:700}
+.switch button[aria-pressed="true"]{background:var(--purple-soft);border-color:var(--purple);color:var(--purple)}
+.note{font-size:13px;color:var(--muted)}
+
+.app{display:grid;grid-template-columns:230px 1fr;gap:24px;padding-block:8px 48px;align-items:start}
+.side{position:sticky;top:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:4px}
+.side .who{padding:6px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.side .who b{font-family:var(--f-display);font-size:18px;display:block}
+.side .who span{font-size:12px;color:var(--muted)}
+.nav{background:none;border:0;text-align:left;padding:9px 10px;border-radius:10px;font-weight:500;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.nav:hover{background:var(--bg)}
+.nav[aria-current="page"]{background:var(--teal-soft);color:var(--teal);font-weight:700}
+.side .exit{margin-top:8px}
+.main{min-width:0;display:grid;gap:20px}
+.main h2{font-size:clamp(26px,3vw,34px)}
+.sub{color:var(--muted);margin-top:4px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.tile span{font-size:12px;color:var(--muted);display:block}
+.tile b{font:500 28px var(--f-mono);letter-spacing:-.03em}
+.tile small{display:block;color:var(--muted);font-size:12px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+.panel h3{font-size:19px;margin-bottom:12px}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 12px 8px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{font-size:18px}.card p{color:var(--muted);font-size:14px}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+label{display:grid;gap:6px;font-weight:700;font-size:13px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.form{display:grid;gap:14px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;font-weight:700;font-size:14px;z-index:9;max-width:calc(100vw - 32px)}
+.toast[hidden]{display:none}
+.confirm{border:1.5px solid var(--purple);background:var(--purple-soft);border-radius:14px;padding:16px;display:grid;gap:12px}
+.bars text{fill:var(--muted);font:11px var(--f-mono)}
+.bars .v{fill:var(--ink)}
+
+@media (max-width:900px){
+  .hero,.gate,.two{grid-template-columns:1fr}
+  .doors{grid-template-columns:repeat(2,1fr)}
+  .tiers{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}
+  .app{grid-template-columns:1fr}
+  .side{position:static;display:flex;overflow-x:auto;align-items:center;padding:8px}
+  .side .who{display:none}.nav{white-space:nowrap}.side .exit{margin:0 0 0 auto}
+}
+@media (max-width:520px){.doors,.flow{grid-template-columns:1fr}.hero{padding-block:24px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+<div id="root"></div>
+<div id="toast" class="toast" hidden role="status"></div>
+<script>
+(function(){
+var ROLES={
+  speaker:{name:'Speakers',one:'Speaker',tag:'Give a funded talk or workshop.',desc:'Pick sponsored speaking slots, submit a talk, and see your sessions and audience in one place.',pts:['Open slots with format, date and audience size','Submit a talk in two minutes','Sponsor logos on every session'],
+    nav:[['slots','Open slots'],['mine','My sessions'],['propose','Submit a talk']]},
+  sponsor:{name:'Sponsors',one:'Sponsor',tag:'Fund a season. Share the audience.',desc:'Join a campaign at Tier A, B or C, read the terms, and track reach as creators publish.',pts:['Shared audience keeps costs down','Contracts and terms in one place','Creator pay rates are never shown to sponsors'],
+    nav:[['overview','Overview'],['perf','Campaign results'],['tiers','Tiers and terms']]},
+  leader:{name:'Leaders',one:'Leader',tag:'Run campaigns without spreadsheets.',desc:'Create campaigns, approve bids, review work and release payouts from one dashboard.',pts:['Approve or decline bids in one click','Weekly payout runs with a confirm step','Reach and engagement per sponsor'],
+    nav:[['overview','Overview'],['bids','Bids'],['creators','Creators'],['payouts','Payouts'],['analytics','Analytics']]},
+  creator:{name:'Creators',one:'Creator',tag:'Bid on paid tasks. Keep your freedom.',desc:'Browse open tasks by tier, bid with a short note, deliver, and get paid in your own country.',pts:['No exclusivity, work with other sponsors','Tier A tasks open now, B and C coming soon','Payouts handled by Deel in 200+ countries'],
+    nav:[['tasks','Open tasks'],['bids','My bids'],['profile','Profile and stats']]}
+};
+var ICONS={
+  speaker:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="5" width="14" height="23" rx="7"/><path d="M10 24a14 14 0 0 0 28 0M24 38v6M16 44h16"/></svg>',
+  sponsor:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20 24 6l18 14M10 20v20h28V20"/><path d="M24 36V24m-4 4h6a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h6"/></svg>',
+  leader:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="m30 18-4 9-9 4 4-9z"/></svg>',
+  creator:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 10 30 32 8l8 8-22 22zM27 13l8 8"/></svg>'
+};
+var TIER={A:{amt:300,name:'Tier A',live:true,what:'Single pieces: a social post, a short reel.'},B:{amt:1500,name:'Tier B',live:false,what:'Mid-scope: blog series, live stream, workshop.'},C:{amt:3500,name:'Tier C',live:false,what:'Full scale: short film, multi-event series.'}};
+
+var S={view:'landing',role:null,page:null,tierFilter:'All',confirmPay:false};
+var D={
+  bids:[
+    {id:1,who:'Asha R.',task:'Intro to vector tiles (blog)',tier:'A',st:'pending'},
+    {id:2,who:'Marcus T.',task:'Map style walkthrough (short reel)',tier:'A',st:'pending'},
+    {id:3,who:'Lena K.',task:'Threat maps for beginners (LinkedIn post)',tier:'A',st:'approved'},
+    {id:4,who:'Dev P.',task:'Geocoding gotchas (blog)',tier:'A',st:'pending'},
+    {id:5,who:'Imani O.',task:'Open data in 10 minutes (short reel)',tier:'A',st:'approved'},
+    {id:6,who:'Sofia G.',task:'Intro to vector tiles (blog)',tier:'A',st:'rejected'}
+  ],
+  tasks:[
+    {id:1,t:'Intro to vector tiles',type:'Blog post',tier:'A',due:'Week 4',spots:2,d:'800 to 1,200 word explainer with one live map embed.'},
+    {id:2,t:'Map style walkthrough',type:'Short reel',tier:'A',due:'Week 4',spots:1,d:'45 to 60 second screen recording with captions.'},
+    {id:3,t:'Open data in 10 minutes',type:'Short reel',tier:'A',due:'Week 5',spots:3,d:'Show one public dataset going from download to chart.'},
+    {id:4,t:'Maps, Data, Design live stream',type:'Live stream',tier:'B',due:'Week 6',spots:2,d:'60 minute stream with Q&A and recording.'},
+    {id:5,t:'Geospatial storytelling series',type:'Blog series',tier:'B',due:'Week 6',spots:1,d:'Three linked posts with shared visuals.'},
+    {id:6,t:'Season recap film',type:'Short film',tier:'C',due:'Wrap-up',spots:1,d:'Three to five minute film from season footage.'}
+  ],
+  mybids:{},
+  slots:[
+    {id:1,t:'Maps that tell the truth',fmt:'30 min talk',when:'Week 3, Thu',aud:'~900 live',sp:'Sample Geo Labs'},
+    {id:2,t:'Hands-on: build a data story',fmt:'90 min workshop',when:'Week 4, Sat',aud:'~120 seats',sp:'Demo Sponsor Co.'},
+    {id:3,t:'Securing location data',fmt:'45 min talk + Q&A',when:'Week 5, Wed',aud:'~700 live',sp:'Demo Sponsor Co.'},
+    {id:4,t:'Season closing panel',fmt:'Panel, 60 min',when:'Week 6, Fri',aud:'~1,500 live',sp:'Sample Geo Labs'}
+  ],
+  mysess:[
+    {t:'Open data for community maps',when:'Week 2, Tue',st:'Delivered',aud:'642 viewers'},
+    {t:'Cartography for non-designers',when:'Week 4, Thu',st:'Confirmed',aud:'Not yet held'}
+  ],
+  weeks:[14.2,31.8,46.5]
+};
+var $=function(s){return document.querySelector(s)};
+var root=$('#root');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function toast(m){var t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(function(){t.hidden=true},2400)}
+function pill(st){var m={pending:['warn','Pending'],approved:['ok','Approved'],rejected:['bad','Declined'],open:['teal','Open'],soon:['mute','Coming soon']}[st];return '<span class="pill '+m[0]+'">'+m[1]+'</span>'}
+function money(n){return '$'+n.toLocaleString('en-US')}
+
+function topbar(){
+  return '<header class="top wrap"><button class="brand" data-act="home" aria-label="Tech Sponsor Network home"><span class="mark"></span>Tech Sponsor Network</button>'+
+  '<div class="top-r"><button class="btn sm" data-act="theme" aria-label="Toggle light or dark theme">Theme</button>'+
+  (S.view==='landing'?'<button class="btn sm primary" data-act="door" data-r="leader">Open demo</button>':'')+'</div></header>';
+}
+
+function landing(){
+  var doors=Object.keys(ROLES).map(function(k){var r=ROLES[k];
+    return '<button class="door" data-act="door" data-r="'+k+'">'+ICONS[k]+'<h3>'+r.name+'</h3><p>'+r.tag+' '+r.desc+'</p><span class="go">Enter as '+r.one.toLowerCase()+' &rarr;</span></button>'}).join('');
+  var tiers=['A','B','C'].map(function(k){var t=TIER[k];
+    return '<div class="tier'+(t.live?'':' locked')+'"><div>'+(t.live?'<span class="pill teal">Live in pilot</span>':'<span class="pill mute">Coming soon</span>')+'</div><b>'+t.name+'</b><div class="amt">'+money(t.amt)+'</div><p>'+t.what+'</p><ul>'+
+    (k==='A'?'<li>Five creators in the pilot</li><li>Posts, reels, short explainers</li>':k==='B'?'<li>Longer lead time</li><li>Workshops and live streams</li>':'<li>Highest production value</li><li>Films and multi-event series</li>')+'</ul></div>'}).join('');
+  return topbar()+'<main class="wrap">'+
+  '<section class="hero"><div><div class="eyebrow">Sponsored campaigns for tech communities</div><h1>Fund the work. <em>Pay the people</em> who do it.</h1><p class="lead">One shared platform where sponsors back a season, creators and speakers deliver the content, and community leaders keep everything running from a single dashboard.</p></div>'+
+  '<aside class="season" aria-label="Sample season"><span class="pill purple">Sample season</span><h3>Maps, Data, Design</h3><div class="note">Winter season, week 3 of 6</div><div class="weeks" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>'+
+  '<dl><div><dt>Creators</dt><dd>5</dd></div><div><dt>Open tasks</dt><dd>6</dd></div><div><dt>Audience</dt><dd>5,500+</dd></div><div><dt>Sponsors</dt><dd>2</dd></div></dl></aside></section>'+
+  '<div class="eyebrow" style="margin-bottom:12px">Choose your door</div><section class="doors">'+doors+'</section>'+
+  '<section class="band"><h2>How a season runs</h2><p class="sub">Six active weeks, then two to four weeks of wrap-up.</p><div class="flow"><div><b>Plan</b><span>Leader sets the theme, tiers and tasks.</span></div><div><b>Bid</b><span>Creators and speakers apply. Leader approves.</span></div><div><b>Deliver</b><span>Content ships with sponsor branding.</span></div><div><b>Report</b><span>Metrics go to sponsors, payouts go to creators.</span></div></div></section>'+
+  '<section class="band"><h2>Creator tiers</h2><p class="sub">Pilot pricing. Tier B and C open after the pilot.</p><div class="tiers">'+tiers+'</div></section>'+
+  '<footer class="foot">This is a demo with sample data. Sponsor and creator names are placeholders. There is no sign-in and nothing you click here is stored or sent.</footer></main>';
+}
+
+function gate(){
+  var r=ROLES[S.role];
+  var sw=Object.keys(ROLES).map(function(k){return '<button data-act="door" data-r="'+k+'" aria-pressed="'+(k===S.role)+'">'+ROLES[k].one+'</button>'}).join('');
+  return topbar()+'<main class="wrap gate"><div class="gate-art"><div><div class="eyebrow">'+r.name+'</div><h2 style="margin-top:10px">'+r.tag+'</h2></div><ul>'+r.pts.map(function(p){return '<li>'+p+'</li>'}).join('')+'</ul></div>'+
+  '<div class="gate-card"><button class="btn sm" data-act="home" style="justify-self:start">&larr; Back</button><h2>Getting started</h2><p class="note">Switch role to see another view.</p><div class="switch" role="group" aria-label="Role">'+sw+'</div>'+
+  '<p>'+r.desc+'</p><button class="btn primary" data-act="enter" style="justify-content:center">Enter demo as '+r.one.toLowerCase()+'</button><p class="note">Demo mode. No account, no password, no data collected.</p></div></main>';
+}
+
+function tile(a,b,c){return '<div class="tile"><span>'+a+'</span><b>'+b+'</b>'+(c?'<small>'+c+'</small>':'')+'</div>'}
+function head(t,s){return '<div><h2>'+t+'</h2><p class="sub">'+s+'</p></div>'}
+function bidTable(rows,leader){
+  return '<div class="tablebox"><table><thead><tr><th>Creator</th><th>Task</th><th>Tier</th><th>Status</th>'+(leader?'<th>Action</th>':'')+'</tr></thead><tbody>'+rows.map(function(b){
+    return '<tr><td>'+esc(b.who)+'</td><td>'+esc(b.task)+'</td><td class="mono">'+b.tier+'</td><td>'+pill(b.st)+'</td>'+(leader?'<td>'+(b.st==='pending'?'<div class="acts"><button class="btn sm teal" data-act="bid" data-id="'+b.id+'" data-v="approved">Approve</button><button class="btn sm" data-act="bid" data-id="'+b.id+'" data-v="rejected">Decline</button></div>':'<span class="note">Done</span>')+'</td>':'')+'</tr>'}).join('')+'</tbody></table></div>'}
+function chart(){
+  var W=560,H=230,L=40,B=34,T=14,max=60,n=6,bw=54,gap=(W-L-n*bw)/(n+1),out='';
+  [0,20,40,60].forEach(function(v){var y=T+(H-T-B)*(1-v/max);out+='<line x1="'+L+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)"/><text x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end">'+v+'K</text>'});
+  for(var i=0;i<n;i++){var x=L+gap+i*(bw+gap),v=D.weeks[i],h=v?(H-T-B)*v/max:0,y=H-B-h;
+    if(v)out+='<rect x="'+x+'" y="'+y+'" width="'+bw+'" height="'+h+'" rx="6" fill="var(--teal)"/><text class="v" x="'+(x+bw/2)+'" y="'+(y-6)+'" text-anchor="middle">'+v+'K</text>';
+    else out+='<rect x="'+x+'" y="'+(H-B-2)+'" width="'+bw+'" height="2" fill="var(--line)"/>';
+    out+='<text x="'+(x+bw/2)+'" y="'+(H-12)+'" text-anchor="middle">Wk '+(i+1)+'</text>'}
+  return '<svg class="bars" viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Impressions by week: week 1 14.2K, week 2 31.8K, week 3 46.5K, weeks 4 to 6 not yet run">'+out+'</svg>'}
+
+var V={
+ leader:{
+  overview:function(){var p=D.bids.filter(function(b){return b.st==='pending'}).length;
+    return head('Good morning','Maps, Data, Design is in week 3 of 6.')+'<div class="tiles">'+tile('Active campaigns','1')+tile('Pending bids',p,'Needs your review')+tile('Payouts this week',money(600),'2 creators')+tile('Impressions',"92.5K",'Weeks 1 to 3')+'</div>'+
+    '<div class="two"><div class="panel"><h3>Bids waiting</h3>'+bidTable(D.bids.filter(function(b){return b.st==='pending'}),true)+(p?'':'<p class="note">All caught up.</p>')+'</div><div class="panel"><h3>This week</h3><p>Reel deadlines land in week 4. Two Tier A spots are still open on the vector tiles post.</p><p class="note" style="margin-top:10px">Sponsors: Demo Sponsor Co., Sample Geo Labs</p></div></div>'},
+  bids:function(){return head('Bids','Approve or decline. Creators are notified by email.')+'<div class="panel">'+bidTable(D.bids,true)+'</div>'},
+  creators:function(){var c=[['Asha R.','Geospatial, writing','4 tasks'],['Marcus T.','Video, mapping','2 tasks'],['Lena K.','Cybersecurity, social','3 tasks'],['Dev P.','Python, data','1 task'],['Imani O.','Open data, reels','2 tasks']];
+    return head('Creators','Invitation-only network. 5 active in the pilot.')+'<div class="cards">'+c.map(function(x){return '<div class="card"><h3>'+x[0]+'</h3><p>'+x[1]+'</p><div class="row"><span class="pill teal">Invited</span><span class="mono note">'+x[2]+'</span></div></div>'}).join('')+'</div>'},
+  payouts:function(){var rows=[['Lena K.','Threat maps post',300,'Approved'],['Imani O.','Open data reel',300,'Approved']];
+    return head('Payouts','Weekly run through Deel. Nothing is sent without your confirmation.')+'<div class="panel"><h3>Ready to pay</h3><div class="tablebox"><table><thead><tr><th>Creator</th><th>Deliverable</th><th>Amount</th><th>Status</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="mono">'+money(r[2])+'</td><td>'+pill('approved')+'</td></tr>'}).join('')+'</tbody></table></div>'+
+    (S.confirmPay?'<div class="confirm" style="margin-top:14px"><b>Process $600 in payouts for 2 creators?</b><div class="acts"><button class="btn primary sm" data-act="pay">Confirm payout run</button><button class="btn sm" data-act="paycancel">Cancel</button></div></div>':'<button class="btn primary" style="margin-top:14px" data-act="payask">Run payouts</button>')+'</div>'},
+  analytics:function(){return head('Analytics','Reach across the season so far.')+'<div class="tiles">'+tile('Impressions','92.5K')+tile('Engagement rate','4.8%')+tile('Content pieces','7','of 12 planned')+tile('Cost per 1K','$6.49','Pilot pricing')+'</div><div class="panel"><h3>Impressions by week</h3>'+chart()+'</div>'}
+ },
+ sponsor:{
+  overview:function(){return head('Welcome, Demo Sponsor Co.','You joined Maps, Data, Design at Tier A.')+'<div class="tiles">'+tile('Impressions','92.5K','Weeks 1 to 3')+tile('Content pieces','7')+tile('Audience reached','5,500+','Luma community')+tile('Your tier','A')+'</div>'+
+    '<div class="panel"><h3>Season progress</h3><div class="weeks"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p class="note">Week 3 of 6. Wrap-up report arrives after week 6.</p></div>'},
+  perf:function(){var rows=[['Threat maps for beginners','LinkedIn post','12.4K','5.1%'],['Open data in 10 minutes','Short reel','21.9K','6.3%'],['Map style walkthrough','Short reel','18.2K','4.2%'],['Geocoding gotchas','Blog','9.6K','3.8%']];
+    return head('Campaign results','What creators have published with your branding.')+'<div class="panel"><div class="tablebox"><table><thead><tr><th>Piece</th><th>Format</th><th>Impressions</th><th>Engagement</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="mono">'+r[2]+'</td><td class="mono">'+r[3]+'</td></tr>'}).join('')+'</tbody></table></div></div><div class="panel"><h3>Impressions by week</h3>'+chart()+'</div>'},
+  tiers:function(){return head('Tiers and terms','Sponsor tier pricing is finalized after the pilot. Pilot sponsors get early rates.')+'<div class="tiers">'+['A','B','C'].map(function(k){var t=TIER[k];return '<div class="tier'+(k==='A'?'':' locked')+'"><div>'+(k==='A'?'<span class="pill ok">Your tier</span>':'<span class="pill mute">Ask the leader</span>')+'</div><b>'+t.name+'</b><p>'+(k==='A'?'Logo and message on every Tier A deliverable. Shared audience and reporting.':k==='B'?'Adds workshops and live streams with dedicated sessions.':'Adds a branded film and a multi-event series.')+'</p><button class="btn sm" data-act="soon">Read terms</button></div>'}).join('')+'</div>'}
+ },
+ creator:{
+  tasks:function(){var f=['All','A','B','C'].map(function(x){return '<button class="btn sm" data-act="filter" data-v="'+x+'" aria-pressed="'+(S.tierFilter===x)+'"'+(S.tierFilter===x?' style="border-color:var(--purple);color:var(--purple)"':'')+'>'+(x==='All'?'All tiers':'Tier '+x)+'</button>'}).join('');
+    var list=D.tasks.filter(function(t){return S.tierFilter==='All'||t.tier===S.tierFilter});
+    return head('Open tasks','Maps, Data, Design. Tier A is open for bids now.')+'<div class="filters">'+f+'</div><div class="cards">'+list.map(function(t){var live=TIER[t.tier].live,got=D.mybids[t.id];
+      return '<div class="card"><div class="row" style="margin:0"><span class="pill '+(live?'teal':'mute')+'">'+TIER[t.tier].name+'</span><span class="mono">'+money(TIER[t.tier].amt)+'</span></div><h3>'+t.t+'</h3><p>'+t.type+'. '+t.d+'</p><div class="row"><span class="note">Due '+t.due+' &middot; '+t.spots+' spot'+(t.spots>1?'s':'')+'</span>'+(!live?'<button class="btn sm" disabled>Coming soon</button>':got?'<span class="pill warn">Bid sent</span>':'<button class="btn sm primary" data-act="mybid" data-id="'+t.id+'">Place bid</button>')+'</div></div>'}).join('')+'</div>'},
+  bids:function(){var ids=Object.keys(D.mybids);
+    var base=[{task:'Threat maps for beginners',tier:'A',st:'approved',due:'Week 3'}];
+    var rows=base.concat(ids.map(function(i){var t=D.tasks[i-1];return {task:t.t,tier:t.tier,st:'pending',due:t.due}}));
+    return head('My bids','Track status from bid to payout.')+'<div class="panel"><div class="tablebox"><table><thead><tr><th>Task</th><th>Tier</th><th>Status</th><th>Due</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+r.task+'</td><td class="mono">'+r.tier+'</td><td>'+pill(r.st)+'</td><td>'+r.due+'</td></tr>'}).join('')+'</tbody></table></div></div>'},
+  profile:function(){return head('Profile and stats','What leaders and sponsors see about you.')+'<div class="tiles">'+tile('Tasks completed','3')+tile('Total earned',money(900))+tile('On-time rate','100%')+tile('Rating','4.9')+'</div><div class="panel"><h3>Sample creator</h3><p>Geospatial writer and mapmaker. Covers open data, cartography and map design for developers.</p><div class="acts" style="margin-top:12px"><span class="pill teal">Geospatial</span><span class="pill teal">Data viz</span><span class="pill purple">Blog</span><span class="pill purple">Short video</span></div><p class="note" style="margin-top:12px">Payouts go through Deel after the campaign wraps.</p></div>'}
+ },
+ speaker:{
+  slots:function(){return head('Open speaking slots','Sponsored sessions in Maps, Data, Design.')+'<div class="cards">'+D.slots.map(function(s){var got=s.taken;
+    return '<div class="card"><span class="pill purple" style="align-self:flex-start">'+s.fmt+'</span><h3>'+s.t+'</h3><p>'+s.when+' &middot; '+s.aud+'<br>Sponsored by '+s.sp+'</p><div class="row"><span></span>'+(got?'<span class="pill warn">Requested</span>':'<button class="btn sm primary" data-act="slot" data-id="'+s.id+'">Request slot</button>')+'</div></div>'}).join('')+'</div>'},
+  mine:function(){return head('My sessions','Delivered and upcoming.')+'<div class="panel"><div class="tablebox"><table><thead><tr><th>Session</th><th>When</th><th>Status</th><th>Audience</th></tr></thead><tbody>'+D.mysess.map(function(s){return '<tr><td>'+esc(s.t)+'</td><td>'+s.when+'</td><td>'+(s.st==='Delivered'?'<span class="pill ok">Delivered</span>':s.st==='Requested'?'<span class="pill warn">Requested</span>':'<span class="pill teal">'+s.st+'</span>')+'</td><td class="mono">'+s.aud+'</td></tr>'}).join('')+'</tbody></table></div></div>'},
+  propose:function(){return head('Submit a talk','Leaders review proposals and match them to sponsors.')+'<form class="panel form" id="talkForm"><label for="tt">Talk title<input id="tt" required placeholder="Maps that tell the truth"></label><label for="tf">Format<select id="tf"><option>30 min talk</option><option>45 min talk + Q&amp;A</option><option>90 min workshop</option><option>Panel</option></select></label><label for="ts">Summary<textarea id="ts" rows="4" placeholder="What will the audience learn?"></textarea></label><div><button class="btn primary" type="submit">Submit proposal</button></div><p class="note">Demo only. Nothing is sent anywhere.</p></form>'}
+ }
+};
+
+function app(){
+  var r=ROLES[S.role];
+  var nav=r.nav.map(function(n){
+    var badge=(S.role==='leader'&&n[0]==='bids')?'<span class="pill warn">'+D.bids.filter(function(b){return b.st==='pending'}).length+'</span>':'';
+    return '<button class="nav" data-act="nav" data-p="'+n[0]+'"'+(S.page===n[0]?' aria-current="page"':'')+'><span>'+n[1]+'</span>'+badge+'</button>'}).join('');
+  return topbar()+'<div class="wrap app"><nav class="side" aria-label="Sections"><div class="who"><b>'+r.one+' view</b><span>Demo workspace</span></div>'+nav+'<button class="btn sm exit" data-act="home">Exit demo</button></nav><main class="main">'+V[S.role][S.page]()+'</main></div>';
+}
+
+function render(){
+  root.innerHTML=S.view==='landing'?landing():S.view==='gate'?gate():app();
+  var f=$('#talkForm');
+  if(f)f.addEventListener('submit',function(e){e.preventDefault();var t=$('#tt').value.trim();if(!t)return;D.mysess.push({t:t,when:'To be scheduled',st:'Requested',aud:'Pending review'});toast('Proposal added to My sessions');S.page='mine';render()});
+  window.scrollTo(0,0);
+}
+
+document.addEventListener('click',function(e){
+  var el=e.target.closest('[data-act]');if(!el)return;var a=el.dataset.act;
+  if(a==='theme'){var d=document.documentElement,cur=d.getAttribute('data-theme');
+    var dark=cur?cur==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;d.setAttribute('data-theme',dark?'light':'dark');return}
+  if(a==='home'){S={view:'landing',role:null,page:null,tierFilter:'All',confirmPay:false}}
+  else if(a==='door'){S.view='gate';S.role=el.dataset.r}
+  else if(a==='enter'){S.view='app';S.page=ROLES[S.role].nav[0][0]}
+  else if(a==='nav'){S.page=el.dataset.p;S.confirmPay=false}
+  else if(a==='bid'){var b=D.bids.filter(function(x){return x.id==el.dataset.id})[0];b.st=el.dataset.v;toast(b.who+': '+(b.st==='approved'?'bid approved':'bid declined'))}
+  else if(a==='payask'){S.confirmPay=true}
+  else if(a==='paycancel'){S.confirmPay=false}
+  else if(a==='pay'){S.confirmPay=false;toast('Sample payout run recorded. No money moved.')}
+  else if(a==='filter'){S.tierFilter=el.dataset.v}
+  else if(a==='mybid'){D.mybids[el.dataset.id]=true;toast('Bid sent to the leader')}
+  else if(a==='slot'){var s=D.slots.filter(function(x){return x.id==el.dataset.id})[0];s.taken=true;D.mysess.push({t:s.t,when:s.when,st:'Requested',aud:'Pending review'});toast('Slot requested')}
+  else if(a==='soon'){toast('Sample terms are not included in this demo');return}
+  render();
+});
+render();
+})();
+</script>
+</body></html>
